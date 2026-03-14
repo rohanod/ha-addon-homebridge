@@ -1,0 +1,20 @@
+name: Homebridge
+version: "latest"
+slug: homebridge
+description: Run the official Homebridge Docker image as a Home Assistant add-on
+url: "https://github.com/rohanod/ha-addon-homebridge/tree/main/homebridge"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+image: homebridge/homebridge
+init: false
+legacy: true
+host_network: true
+startup: application
+boot: auto
+webui: "http://[HOST]:8581"
+map:
+  - type: data
+    path: /homebridge
+schema: false
