@@ -1,0 +1,26 @@
+{
+  "$schema": "https://btca.dev/btca.schema.json",
+  "dataDirectory": ".btca",
+  "resources": [
+    {
+      "type": "git",
+      "name": "docker-homebridge",
+      "url": "https://github.com/homebridge/docker-homebridge",
+      "branch": "latest"
+    },
+    {
+      "type": "git",
+      "name": "homebridge",
+      "url": "https://github.com/homebridge/homebridge",
+      "branch": "latest"
+    },
+    {
+      "type": "git",
+      "name": "homebridge-config-ui-x",
+      "url": "https://github.com/homebridge/homebridge-config-ui-x",
+      "branch": "latest"
+    }
+  ],
+  "model": "gpt-5.3-codex",
+  "provider": "openai"
+}
