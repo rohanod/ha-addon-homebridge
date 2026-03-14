@@ -15,8 +15,8 @@ legacy: true
 host_network: true
 startup: application
 boot: auto
-webui: "http://[HOST]:8581"
-watchdog: "http://[HOST]:8581"
+webui: "http://[HOST]:[PORT:8581]"
+watchdog: "http://[HOST]:[PORT:8581]"
 map:
   - type: data
     path: /homebridge
