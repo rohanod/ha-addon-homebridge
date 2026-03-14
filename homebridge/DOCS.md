@@ -11,6 +11,8 @@ The add-on is designed to stay close to upstream behavior:
 - Homebridge runs with host networking, which is required for HomeKit discovery.
 - The Home Assistant add-on data directory is mounted at `/homebridge`, which
   matches the official Homebridge Docker image.
+- The add-on tracks the upstream multi-architecture `homebridge/homebridge`
+  image for `amd64`, `aarch64`, and `armv7`.
 - The Homebridge UI remains the primary place to manage configuration, plugins,
   logs, restarts, and startup scripts.
 
@@ -38,6 +40,7 @@ The add-on is designed to stay close to upstream behavior:
 ## Updates
 
 - Update the add-on to pull a newer Homebridge container image.
+- This add-on tracks the upstream `latest` Homebridge image tag.
 - Use the Homebridge UI for plugin installation and plugin updates.
 - Do not rely on in-container updates of Homebridge core, Homebridge UI, or the
   Node.js runtime. Those are overwritten when the container image is updated.

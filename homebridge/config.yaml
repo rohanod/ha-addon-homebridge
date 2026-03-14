@@ -3,6 +3,8 @@ version: "latest"
 slug: homebridge
 description: Run the official Homebridge Docker image as a Home Assistant add-on
 url: "https://github.com/rohanod/ha-addon-homebridge/tree/main/homebridge"
+stage: stable
+panel_icon: mdi:bridge
 arch:
   - amd64
   - aarch64
@@ -14,6 +16,7 @@ host_network: true
 startup: application
 boot: auto
 webui: "http://[HOST]:8581"
+watchdog: "http://[HOST]:8581"
 map:
   - type: data
     path: /homebridge
