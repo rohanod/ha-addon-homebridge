@@ -1,23 +1,21 @@
 name: Homebridge
-version: "0.2.0"
+version: "0.3.0"
 slug: homebridge
-description: Run Homebridge in the Home Assistant sidebar using ingress
+description: Run the official Homebridge Docker image as a Home Assistant add-on
 url: "https://github.com/rohanod/ha-addon-homebridge/tree/main/homebridge"
 stage: stable
-panel_admin: true
-panel_title: Homebridge
 panel_icon: mdi:bridge
 arch:
   - amd64
   - aarch64
   - armv7
+image: homebridge/homebridge
 init: false
 legacy: true
 host_network: true
 startup: application
 boot: auto
-ingress: true
-ingress_port: 8099
+webui: "http://[HOST]:[PORT:8581]"
 watchdog: "http://[HOST]:[PORT:8581]"
 map:
   - type: data
