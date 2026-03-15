@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0
+## latest
 
 - Revert to the upstream Homebridge container model without ingress-specific
   proxying.
