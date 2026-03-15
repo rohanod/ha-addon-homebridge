@@ -1,10 +1,11 @@
 # Homebridge
 
-Run the official Homebridge Docker image as a Home Assistant add-on.
+Run Homebridge as a Home Assistant add-on with sidebar access through ingress.
 
-This add-on keeps the upstream Homebridge workflow intact:
+This add-on keeps the upstream Homebridge workflow intact while adding a small
+ingress proxy layer for Home Assistant:
 
-- access the Homebridge UI on port `8581`
+- open Homebridge from the Home Assistant sidebar
 - manage plugins and `config.json` in the Homebridge UI
 - persist Homebridge data in the add-on data directory, mounted at
   `/homebridge`
