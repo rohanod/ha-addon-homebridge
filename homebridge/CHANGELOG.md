@@ -1,6 +1,7 @@
 # Changelog
 
-## latest
+## 0.2.0
 
-- Initial Home Assistant add-on packaging for the official Homebridge Docker
-  image.
+- Add Home Assistant ingress/sidebar support using an internal Nginx proxy.
+- Switch from external-image packaging to a local add-on build based on the
+  official Homebridge Docker image.

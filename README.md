@@ -2,7 +2,7 @@
 
 This repository provides a Home Assistant add-on for running the official
 [`homebridge/homebridge`](https://github.com/homebridge/docker-homebridge)
-Docker image.
+Docker image inside the Home Assistant sidebar.
 
 The add-on is intentionally thin:
 
@@ -10,8 +10,8 @@ The add-on is intentionally thin:
   scripts in the Homebridge UI.
 - It preserves the upstream `/homebridge` data model by mapping the Home
   Assistant add-on data directory to `/homebridge`.
-- It exposes the Homebridge UI directly on port `8581` instead of depending on
-  Home Assistant ingress.
+- It adds a minimal ingress proxy so Homebridge opens from the Home Assistant
+  sidebar while Homebridge itself remains upstream.
 
 ## Installation
 
