@@ -1,6 +1,6 @@
 # Changelog
 
-## latest
+## 2026-04-17
 
 - Revert to the upstream Homebridge container model without ingress-specific
   proxying.
