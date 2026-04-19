@@ -1,0 +1,56 @@
+name: Bump Homebridge version
+
+on:
+  schedule:
+    - cron: "0 23 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump-homebridge-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read current and latest Homebridge versions
+        id: versions
+        run: |
+          set -euo pipefail
+
+          current_version="$(sed -n 's/^version: "\(.*\)"/\1/p' homebridge/config.yaml)"
+          latest_version="$(curl -fsSL https://registry.npmjs.org/homebridge/latest | jq -r '.version')"
+
+          if [ -z "$latest_version" ] || [ "$latest_version" = "null" ]; then
+            echo "Failed to resolve latest Homebridge version"
+            exit 1
+          fi
+
+          echo "current=$current_version" >> "$GITHUB_OUTPUT"
+          echo "latest=$latest_version" >> "$GITHUB_OUTPUT"
+
+      - name: Update version in add-on config
+        if: steps.versions.outputs.current != steps.versions.outputs.latest
+        run: |
+          set -euo pipefail
+          sed -i 's/^version: ".*"/version: "${{ steps.versions.outputs.latest }}"/' homebridge/config.yaml
+
+      - name: Create pull request
+        if: steps.versions.outputs.current != steps.versions.outputs.latest
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/bump-homebridge-${{ steps.versions.outputs.latest }}
+          commit-message: "chore: bump Homebridge version to ${{ steps.versions.outputs.latest }}"
+          title: "chore: bump Homebridge version to ${{ steps.versions.outputs.latest }}"
+          body: |
+            Automated weekly update.
+
+            - Current version: `${{ steps.versions.outputs.current }}`
+            - Latest Homebridge version: `${{ steps.versions.outputs.latest }}`
+          labels: |
+            dependencies
+            homebridge
