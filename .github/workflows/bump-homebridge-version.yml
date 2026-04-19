@@ -23,7 +23,12 @@ jobs:
           set -euo pipefail
 
           current_version="$(sed -n 's/^version: "\(.*\)"/\1/p' homebridge/config.yaml)"
-          latest_version="$(curl -fsSL https://registry.npmjs.org/homebridge/latest | jq -r '.version')"
+          latest_version="$(curl --connect-timeout 10 --max-time 30 -fsSL https://registry.npmjs.org/homebridge/latest | jq -r '.version')"
+
+          if [ -z "$current_version" ]; then
+            echo "Failed to resolve current add-on version from homebridge/config.yaml"
+            exit 1
+          fi
 
           if [ -z "$latest_version" ] || [ "$latest_version" = "null" ]; then
             echo "Failed to resolve latest Homebridge version"
