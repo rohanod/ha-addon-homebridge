@@ -22,3 +22,12 @@ The add-on is intentionally thin:
 
 See [homebridge/DOCS.md](homebridge/DOCS.md) for setup details and update
 behavior.
+
+## Automation
+
+The scheduled workflow `.github/workflows/bump-homebridge-version.yml` opens
+pull requests for Homebridge version bumps.
+
+If you see errors like `GitHub Actions is not permitted to create or approve pull requests`,
+create a fine-grained PAT with `Contents: Read and write` and `Pull requests: Read and write`
+on this repo, and add it as an Actions secret named `PAT_CREATE_PR`.
