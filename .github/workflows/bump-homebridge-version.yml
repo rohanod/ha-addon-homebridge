@@ -53,7 +53,6 @@ jobs:
         if: steps.versions.outputs.current != steps.versions.outputs.latest
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.PAT_CREATE_PR }}
           branch: automation/bump-homebridge-${{ steps.versions.outputs.latest }}
           commit-message: "chore: bump Homebridge version to ${{ steps.versions.outputs.latest }}"
           title: "chore: bump Homebridge version to ${{ steps.versions.outputs.latest }}"
