@@ -28,6 +28,10 @@ behavior.
 The scheduled workflow `.github/workflows/bump-homebridge-version.yml` opens
 pull requests for Homebridge version bumps.
 
+If the workflow fails with `Input 'token' not supplied`, ensure the workflow is
+using `${{ github.token }}` (the built-in `GITHUB_TOKEN`) when calling
+`peter-evans/create-pull-request`.
+
 If you see errors like `GitHub Actions is not permitted to create or approve pull requests`,
-create a fine-grained PAT with `Contents: Read and write` and `Pull requests: Read and write`
-on this repo, and add it as an Actions secret named `PAT_CREATE_PR`.
+create a fine-grained PAT with `Contents: Read and write` and
+`Pull requests: Read and write` on this repo, and use it instead.
