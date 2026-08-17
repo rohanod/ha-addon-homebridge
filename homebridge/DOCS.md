@@ -41,9 +41,9 @@ The add-on is designed to stay close to upstream behavior:
 
 ## Updates
 
-- Update this repository's add-on version to a newer upstream Homebridge image
-  tag, then update the add-on in Home Assistant.
-- This add-on uses a manually pinned upstream Homebridge image tag.
+- This add-on uses a pinned upstream Homebridge image tag.
+- The daily update workflow opens and merges an add-on update when Homebridge
+  publishes a newer dated image tag.
 - Use the Homebridge UI for plugin installation and plugin updates.
 - Do not rely on in-container updates of Homebridge core, Homebridge UI, or the
   Node.js runtime. Those are overwritten when the container image is updated.
